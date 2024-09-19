@@ -1,0 +1,21 @@
+models:
+  - name: orders
+    description: one record per jaffle order, from circus and normal jaffle shop
+    access: public
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: unique_key 
+        data_type: text
+        data_tests:
+          - unique
+          - not_null
+      - name: sale_location
+        data_type: text
+      - name: order_id
+        data_type: text
+      - name: total_jaffles_purchased
+        data_type: BIGINT
+      - name: total_jaffle_revenue
+        data_type: NUMERIC
