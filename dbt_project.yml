@@ -27,5 +27,4 @@ seeds:
 
 models:
   jaffle_shop_mesh_platform:
-    staging:
-      +materialized: view
+    +materialized: table
