@@ -30,3 +30,5 @@ renamed as (
 )
 
 select * from renamed
+union all
+select * from {{ ref('cirque_location') }}

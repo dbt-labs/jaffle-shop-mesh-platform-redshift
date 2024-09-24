@@ -11,6 +11,8 @@ models:
         data_tests:
           - unique
           - not_null
+      - name: location_id
+        data_type: text
       - name: sale_location
         data_type: text
       - name: order_id
