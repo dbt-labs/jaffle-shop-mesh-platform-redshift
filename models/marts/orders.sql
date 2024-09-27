@@ -12,11 +12,19 @@ circus_concessions as (
 
 ),
 
+cirque_location as (
+
+    select * from {{ ref('cirque_location') }}
+
+),
+
 unioned as (
 
     select 
         'jaffle_shop' as sale_location,
+        location_id,
         cast(order_id as text) as order_id,
+        cast(customer_id as text) as customer_id,
         coalesce(count_food_items, 0) as total_jaffles_purchased,
         coalesce(food_order_items_subtotal, 0) as total_jaffle_revenue
     
@@ -26,11 +34,14 @@ unioned as (
 
     select 
         'cirque_du_jaffle' as sale_location,
+        cirque_location.location_id,
         cast(concession_sale_id as text) as order_id,
+        cast(customer_id as text) as customer_id,
         coalesce(total_jaffles_purchased, 0) as total_jaffles_purchased,
         coalesce(order_jaffle_subtotal, 0) as total_jaffle_revenue
     
     from circus_concessions
+    cross join cirque_location
 
 ),
 

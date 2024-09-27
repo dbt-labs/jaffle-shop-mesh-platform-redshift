@@ -8,7 +8,7 @@ require-dbt-version: ">=1.6.0"
 model-paths: ["models"]
 analysis-paths: ["analyses"]
 test-paths: ["tests"]
-seed-paths: ["jaffle-data"]
+seed-paths: ["seeds"] # ["jaffle-data"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
@@ -23,7 +23,7 @@ vars:
 
 seeds:
   jaffle_shop_mesh_platform:
-    +schema: jaffle_shop_raw
+    # +schema: jaffle_shop_raw
 
 models:
   jaffle_shop_mesh_platform:
