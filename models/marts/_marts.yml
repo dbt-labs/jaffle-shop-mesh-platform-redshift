@@ -19,6 +19,8 @@ models:
         data_type: text
       - name: customer_id
         data_type: text
+      - name: ordered_at
+        data_type: timestamp
       - name: total_jaffles_purchased
         data_type: BIGINT
       - name: total_jaffle_revenue
