@@ -26,6 +26,7 @@ unioned as (
         cast(order_id as text) as order_id,
         cast(customer_id as text) as customer_id,
         ordered_at,
+        order_total,
         coalesce(count_food_items, 0) as total_jaffles_purchased,
         coalesce(food_order_items_subtotal, 0) as total_jaffle_revenue
     
@@ -39,6 +40,7 @@ unioned as (
         cast(concession_sale_id as text) as order_id,
         cast(customer_id as text) as customer_id,
         sold_at as ordered_at,
+        order_subtotal as order_total,
         coalesce(total_jaffles_purchased, 0) as total_jaffles_purchased,
         coalesce(order_jaffle_subtotal, 0) as total_jaffle_revenue
     
