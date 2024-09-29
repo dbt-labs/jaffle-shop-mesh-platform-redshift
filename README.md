@@ -48,8 +48,8 @@ Once your project is set up, use the following steps to get the project ready fo
 
 ### dbt Cloud IDE
 
-1. Run `dbt seed` to load the sample data into your raw schema.
-2. Delete the `jaffle-data` directory now that the raw data is loaded into the warehouse.
+1. Run `dbt seed -f --vars 'refresh_seeds: True'` to load the sample data into your raw schema.
+2. If you want to change the source data, edit the seeds in the `seeds/jaffle_shop_raw` subdirectory and rerun that command. Otherwise, these seeds are disabled in the project.
 
 ### dbt Cloud in Github Codespaces / Gitpod / local
 
