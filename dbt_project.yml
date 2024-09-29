@@ -9,7 +9,7 @@ model-paths: ["models"]
 analysis-paths: ["analyses"]
 test-paths: ["tests"]
 seed-paths: ["seeds"]
-macro-paths: ["macros"]
+macro-paths: ["macros", "jaffle_utils"]
 snapshot-paths: ["snapshots"]
 
 target-path: "target"
