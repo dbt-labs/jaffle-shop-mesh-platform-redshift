@@ -1,0 +1,5 @@
+# This 'sub-project' makes it possible for the Platform project to define macros, call them as normal,
+# while also enabling other projects in the Jaffle Mesh to import these macros and call them
+# from the 'jaffle_utils' namespace.
+
+name: jaffle_utils
