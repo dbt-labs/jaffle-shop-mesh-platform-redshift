@@ -30,3 +30,5 @@ seeds:
 models:
   jaffle_shop_mesh_platform:
     +materialized: table
+    marts:
+      +grants: {select: [cdo_carmi]}
