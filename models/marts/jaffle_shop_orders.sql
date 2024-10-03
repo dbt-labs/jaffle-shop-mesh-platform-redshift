@@ -12,6 +12,12 @@ order_items as (
 
 ),
 
+leaving_this_here_accidentally as (
+
+    select * from {{ ref('orders') }}
+
+),
+
 order_items_summary as (
 
     select
