@@ -14,7 +14,7 @@ order_items as (
 
 leaving_this_here_accidentally as (
 
-    select * from {{ ref('orders') }}
+    select * from {{ ref('stg_customers') }}
 
 ),
 
