@@ -1,0 +1,78 @@
+semantic_models:
+- name: orders_daily_snapshot
+  description: Daily snapshot of orders with various item counts and subtotals.
+  model: ref('orders_daily_snapshot')
+  defaults:
+    agg_time_dimension: date_day
+  entities:
+  - name: order
+    type: primary
+    expr: order_id
+  dimensions:
+  - name: date_day
+    type: time
+    type_params:
+      time_granularity: day
+  - name: cost
+    expr: order_cost
+    type: categorical
+  - name: items_subtotal
+    expr: order_items_subtotal
+    type: categorical
+  - name: count_food_items
+    type: categorical
+  - name: count_drink_items
+    type: categorical
+  - name: count_order_items
+    type: categorical
+  - name: food_order_items_subtotal
+    type: categorical
+  - name: drink_order_items_subtotal
+    type: categorical
+  measures:
+  - name: total_order_cost
+    description: The total cost of orders.
+    agg: sum
+    create_metric: true
+    expr: order_cost
+  - name: total_order_items_subtotal
+    description: The total subtotal of order items.
+    agg: sum
+    create_metric: true
+    expr: order_items_subtotal
+  - name: total_count_food_items
+    description: The total count of food items ordered.
+    agg: sum
+    create_metric: true
+    expr: count_food_items
+  - name: total_count_drink_items
+    description: The total count of drink items ordered.
+    agg: sum
+    create_metric: true
+    expr: count_drink_items
+  - name: total_count_order_items
+    description: The total count of all items ordered.
+    agg: sum
+    create_metric: true
+    expr: count_order_items
+  - name: total_food_order_items_subtotal
+    description: The total subtotal of food order items.
+    agg: sum
+    create_metric: true
+    expr: food_order_items_subtotal
+  - name: total_drink_order_items_subtotal
+    description: The total subtotal of drink order items.
+    agg: sum
+    create_metric: true
+    expr: drink_order_items_subtotal
+  - name: count_order
+    agg: count
+    create_metric: true
+    expr: order_id
+metrics:
+  - name: total_order_cost_metric
+    description: The total cost of orders.
+    type: simple
+    label: Total Amount
+    type_params:
+      measure: total_order_cost

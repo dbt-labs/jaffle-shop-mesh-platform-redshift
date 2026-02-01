@@ -1,29 +1,46 @@
 models:
-  - name: orders
-    description: one record per jaffle order, from circus and normal jaffle shop
-    access: public
-    config:
-      contract:
-        enforced: true
+  - name: order_items
+    description: This model consolidates order items with their respective order details, product information, and supply costs. It provides a comprehensive view of each order item, including when it was ordered, the product details, and the associated supply costs.
     columns:
-      - name: unique_key 
-        data_type: text
-        data_tests:
-          - unique
-          - not_null
-      - name: location_id
-        data_type: text
-      - name: sale_location
-        data_type: text
       - name: order_id
-        data_type: text
-      - name: customer_id
-        data_type: text
+        description: The unique identifier for each order.
+      - name: product_id
+        description: The unique identifier for each product.
       - name: ordered_at
-        data_type: timestamp
-      - name: order_total
-        data_type: numeric
-      - name: total_jaffles_purchased
-        data_type: bigint
-      - name: total_jaffle_revenue
-        data_type: numeric
+        description: The timestamp when the order was placed.
+      - name: product_name
+        description: The name of the product ordered.
+      - name: product_price
+        description: The price of the product ordered.
+      - name: is_food_item
+        description: Indicates whether the product is a food item.
+      - name: is_drink_item
+        description: Indicates whether the product is a drink item.
+      - name: supply_cost
+        description: The total cost of supplies associated with the product.
+        
+  - name: orders
+    description: This model aggregates order data, combining information from orders, order items, and customer data to provide a comprehensive view of each order, including cost breakdowns and item counts.
+    columns:
+      - name: order_id
+        description: A unique identifier for each order.
+      - name: order_date
+        description: Date of the order
+      - name: order_cost
+        description: The total supply cost of all items in the order.
+      - name: order_items_subtotal
+        description: The total price of all items in the order before any discounts or taxes.
+      - name: food_order_items_subtotal
+        description: The total price of all food items in the order.
+      - name: drink_order_items_subtotal
+        description: The total price of all drink items in the order.
+      - name: count_order_items
+        description: The total number of items in the order.
+      - name: count_food_items
+        description: The total number of food items in the order.
+      - name: count_drink_items
+        description: The total number of drink items in the order.
+      - name: is_food_order
+        description: Indicates whether the order contains any food items.
+      - name: is_drink_order
+        description: Indicates whether the order contains any drink items.
